@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Modak'),
+        title: const Text('모닥'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: const Center(
@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Text(
-              'Modak 앱에 오신 것을 환영합니다!',
+              '모닥에 오신 것을 환영합니다!',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
