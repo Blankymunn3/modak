@@ -12,7 +12,8 @@
       "WebFetch(domain:github.com)",
       "Bash(git pull:*)",
       "Bash(mkdir:*)",
-      "Bash(git flow init:*)"
+      "Bash(git flow init:*)",
+      "Bash(git checkout:*)"
     ],
     "deny": [],
     "ask": []
