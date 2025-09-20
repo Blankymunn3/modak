@@ -4,7 +4,17 @@
       "Bash(flutter:*)",
       "Bash(git commit:*)",
       "Bash(git add:*)",
-      "Bash(git merge:*)"
+      "Bash(git merge:*)",
+      "Bash(gh repo create:*)",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(git remote set-url:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(git pull:*)",
+      "Bash(mkdir:*)",
+      "Bash(git flow init:*)",
+      "Bash(git checkout:*)"
     ],
     "deny": [],
     "ask": []

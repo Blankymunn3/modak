@@ -18,15 +18,14 @@ migrate_working_dir/
 *.iws
 .idea/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
+# VS Code
+.vscode/
 
 # Flutter/Dart/Pub related
 **/doc/api/
 **/ios/Flutter/.last_build_id
 .dart_tool/
+.flutter-plugins
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
@@ -43,3 +42,68 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Web
+/web/
+
+# Windows
+windows/
+
+# macOS
+macos/
+
+# Linux
+linux/
+
+# iOS specific
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/flutter_assets/
+ios/ServiceDefinitions.json
+ios/Runner/GeneratedPluginRegistrant.*
+
+# Android specific
+android/.gradle/
+android/captures/
+android/gradle/wrapper/gradle-wrapper.jar
+android/gradlew
+android/gradlew.bat
+android/local.properties
+android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+
+# Keystore files
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Claude Code specific
+.claude/settings.local.json
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.production
+
+# Log files
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+.temp/
+.tmp/
+
+# Firebase
+**/google-services.json
+**/GoogleService-Info.plist
+firebase.json
+.firebaserc
+
+# Secrets and API keys
+secrets.yaml
+api_keys.yaml
+config/secrets.yaml
