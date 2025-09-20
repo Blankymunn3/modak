@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart';
-import 'screens/map_screen.dart';
-import 'screens/journal_screen.dart';
-import 'screens/community_screen.dart';
-import 'screens/profile_screen.dart';
+import 'package:provider/provider.dart';
+import 'views/home_screen.dart';
+import 'views/map_screen.dart';
+import 'views/journal_screen.dart';
+import 'views/community_screen.dart';
+import 'views/profile_screen.dart';
+import 'viewmodels/main_viewmodel.dart';
+import 'viewmodels/home_viewmodel.dart';
+import 'viewmodels/map_viewmodel.dart';
+import 'viewmodels/journal_viewmodel.dart';
+import 'services/camping_service.dart';
+import 'services/journal_service.dart';
 
 void main() {
   runApp(const ModakApp());
@@ -14,88 +21,114 @@ class ModakApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: '모닥',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
-        useMaterial3: true,
-        appBarTheme: const AppBarTheme(
-          centerTitle: true,
-          titleTextStyle: TextStyle(
-            color: Colors.black87,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
+    return MultiProvider(
+      providers: [
+        Provider<CampingService>(create: (_) => CampingServiceImpl()),
+        Provider<JournalService>(create: (_) => JournalServiceImpl()),
+        ChangeNotifierProvider(create: (_) => MainViewModel()),
+        ChangeNotifierProxyProvider2<CampingService, JournalService, HomeViewModel>(
+          create: (context) => HomeViewModel(
+            campingService: context.read<CampingService>(),
+            journalService: context.read<JournalService>(),
           ),
-          iconTheme: IconThemeData(color: Colors.black87),
+          update: (context, campingService, journalService, previous) => HomeViewModel(
+            campingService: campingService,
+            journalService: journalService,
+          ),
         ),
+        ChangeNotifierProxyProvider<CampingService, MapViewModel>(
+          create: (context) => MapViewModel(
+            campingService: context.read<CampingService>(),
+          ),
+          update: (context, campingService, previous) => MapViewModel(
+            campingService: campingService,
+          ),
+        ),
+        ChangeNotifierProxyProvider<JournalService, JournalViewModel>(
+          create: (context) => JournalViewModel(
+            journalService: context.read<JournalService>(),
+          ),
+          update: (context, journalService, previous) => JournalViewModel(
+            journalService: journalService,
+          ),
+        ),
+      ],
+      child: MaterialApp(
+        title: '모닥',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
+          useMaterial3: true,
+          appBarTheme: const AppBarTheme(
+            centerTitle: true,
+            titleTextStyle: TextStyle(
+              color: Colors.black87,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+            iconTheme: IconThemeData(color: Colors.black87),
+          ),
+        ),
+        home: const MainTabView(),
       ),
-      home: const MainTabView(),
     );
   }
 }
 
-class MainTabView extends StatefulWidget {
+class MainTabView extends StatelessWidget {
   const MainTabView({super.key});
 
   @override
-  State<MainTabView> createState() => _MainTabViewState();
-}
-
-class _MainTabViewState extends State<MainTabView> {
-  int _selectedIndex = 0;
-
-  final List<Widget> _screens = [
-    const HomeScreen(),
-    const MapScreen(),
-    const JournalScreen(),
-    const CommunityScreen(),
-    const ProfileScreen(),
-  ];
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _screens[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _selectedIndex,
-        onTap: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-        selectedItemColor: Colors.orange,
-        unselectedItemColor: Colors.grey,
-        selectedLabelStyle: const TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.bold,
-        ),
-        unselectedLabelStyle: const TextStyle(
-          fontSize: 12,
-        ),
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: '홈',
+    return Consumer<MainViewModel>(
+      builder: (context, mainViewModel, child) {
+        final screens = [
+          const HomeScreen(),
+          const MapScreen(),
+          const JournalScreen(),
+          const CommunityScreen(),
+          const ProfileScreen(),
+        ];
+
+        return Scaffold(
+          body: screens[mainViewModel.selectedIndex],
+          bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            currentIndex: mainViewModel.selectedIndex,
+            onTap: mainViewModel.changeTab,
+            selectedItemColor: Colors.orange,
+            unselectedItemColor: Colors.grey,
+            selectedLabelStyle: const TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+            ),
+            unselectedLabelStyle: const TextStyle(
+              fontSize: 12,
+            ),
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: '홈',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.map),
+                label: '지도',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.edit_note),
+                label: '기록',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.forum),
+                label: '모닥불',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: '내 정보',
+              ),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.map),
-            label: '지도',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.edit_note),
-            label: '기록',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.forum),
-            label: '모닥불',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: '내 정보',
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
