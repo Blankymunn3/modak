@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:modak/di_container.dart';
 import 'views/home_screen.dart';
 import 'views/map_screen.dart';
 import 'views/journal_screen.dart';
@@ -10,11 +11,11 @@ import 'viewmodels/main_viewmodel.dart';
 import 'viewmodels/home_viewmodel.dart';
 import 'viewmodels/map_viewmodel.dart';
 import 'viewmodels/journal_viewmodel.dart';
-import 'services/camping_service.dart';
-import 'services/journal_service.dart';
 import 'l10n/app_localizations.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  setupDependencies();
   runApp(const ModakApp());
 }
 
@@ -25,38 +26,13 @@ class ModakApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<CampingService>(create: (_) => CampingServiceImpl()),
-        Provider<JournalService>(create: (_) => JournalServiceImpl()),
-        ChangeNotifierProvider(create: (_) => MainViewModel()),
-        ChangeNotifierProxyProvider2<CampingService, JournalService, HomeViewModel>(
-          create: (context) => HomeViewModel(
-            campingService: context.read<CampingService>(),
-            journalService: context.read<JournalService>(),
-          ),
-          update: (context, campingService, journalService, previous) => HomeViewModel(
-            campingService: campingService,
-            journalService: journalService,
-          ),
-        ),
-        ChangeNotifierProxyProvider<CampingService, MapViewModel>(
-          create: (context) => MapViewModel(
-            campingService: context.read<CampingService>(),
-          ),
-          update: (context, campingService, previous) => MapViewModel(
-            campingService: campingService,
-          ),
-        ),
-        ChangeNotifierProxyProvider<JournalService, JournalViewModel>(
-          create: (context) => JournalViewModel(
-            journalService: context.read<JournalService>(),
-          ),
-          update: (context, journalService, previous) => JournalViewModel(
-            journalService: journalService,
-          ),
-        ),
+        ChangeNotifierProvider(create: (context) => getIt<MainViewModel>()),
+        ChangeNotifierProvider(create: (context) => getIt<HomeViewModel>()),
+        ChangeNotifierProvider(create: (context) => getIt<MapViewModel>()),
+        ChangeNotifierProvider(create: (context) => getIt<JournalViewModel>()),
       ],
       child: MaterialApp(
-        onGenerateTitle: (context) => AppLocalizations.of(context).appTitle,
+        onGenerateTitle: (context) => AppLocalizations.of(context)!.appTitle,
         localizationsDelegates: const [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
