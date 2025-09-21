@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 
 class CommunityScreen extends StatelessWidget {
   const CommunityScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('모닥불'),
+        title: Text(l10n.community),
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
@@ -28,7 +31,7 @@ class CommunityScreen extends StatelessWidget {
                   child: ElevatedButton.icon(
                     onPressed: () {},
                     icon: const Icon(Icons.help_outline),
-                    label: const Text('질문하기'),
+                    label: Text(l10n.askQuestion),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.orange,
                       foregroundColor: Colors.white,
@@ -41,7 +44,7 @@ class CommunityScreen extends StatelessWidget {
                   child: OutlinedButton.icon(
                     onPressed: () {},
                     icon: const Icon(Icons.rate_review),
-                    label: const Text('후기 올리기'),
+                    label: Text(l10n.postReview),
                   ),
                 ),
               ],
@@ -55,12 +58,12 @@ class CommunityScreen extends StatelessWidget {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                _buildTagChip('전체', true),
-                _buildTagChip('노지', false),
-                _buildTagChip('차박', false),
-                _buildTagChip('장비', false),
-                _buildTagChip('요리', false),
-                _buildTagChip('팁', false),
+                _buildTagChip(l10n.all, true, context),
+                _buildTagChip(l10n.wildCamping, false, context),
+                _buildTagChip(l10n.carCamping, false, context),
+                _buildTagChip(l10n.equipment, false, context),
+                _buildTagChip(l10n.cooking, false, context),
+                _buildTagChip(l10n.tips, false, context),
               ],
             ),
           ),
@@ -234,7 +237,7 @@ class CommunityScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTagChip(String label, bool isSelected) {
+  Widget _buildTagChip(String label, bool isSelected, BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(right: 8),
       child: FilterChip(

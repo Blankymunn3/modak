@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'views/home_screen.dart';
 import 'views/map_screen.dart';
@@ -11,6 +12,7 @@ import 'viewmodels/map_viewmodel.dart';
 import 'viewmodels/journal_viewmodel.dart';
 import 'services/camping_service.dart';
 import 'services/journal_service.dart';
+import 'l10n/app_localizations.dart';
 
 void main() {
   runApp(const ModakApp());
@@ -54,7 +56,17 @@ class ModakApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        title: '모닥',
+        onGenerateTitle: (context) => AppLocalizations.of(context).appTitle,
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('ko'),
+          Locale('en'),
+        ],
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
           useMaterial3: true,
@@ -104,26 +116,26 @@ class MainTabView extends StatelessWidget {
             unselectedLabelStyle: const TextStyle(
               fontSize: 12,
             ),
-            items: const [
+            items: [
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: '홈',
+                icon: const Icon(Icons.home),
+                label: AppLocalizations.of(context).home,
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.map),
-                label: '지도',
+                icon: const Icon(Icons.map),
+                label: AppLocalizations.of(context).map,
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.edit_note),
-                label: '기록',
+                icon: const Icon(Icons.edit_note),
+                label: AppLocalizations.of(context).journal,
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.forum),
-                label: '모닥불',
+                icon: const Icon(Icons.forum),
+                label: AppLocalizations.of(context).community,
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: '내 정보',
+                icon: const Icon(Icons.person),
+                label: AppLocalizations.of(context).profile,
               ),
             ],
           ),

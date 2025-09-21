@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../l10n/app_localizations.dart';
 import '../viewmodels/home_viewmodel.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -23,16 +24,23 @@ class _HomeScreenState extends State<HomeScreen> {
     return Consumer<HomeViewModel>(
       builder: (context, homeViewModel, child) {
         if (homeViewModel.isLoading) {
-          return const Scaffold(
+          return Scaffold(
             body: Center(
-              child: CircularProgressIndicator(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const CircularProgressIndicator(),
+                  const SizedBox(height: 16),
+                  Text(AppLocalizations.of(context).loading),
+                ],
+              ),
             ),
           );
         }
 
         return Scaffold(
           appBar: AppBar(
-            title: const Text('홈'),
+            title: Text(AppLocalizations.of(context).home),
             backgroundColor: Colors.transparent,
             elevation: 0,
           ),
@@ -51,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: ElevatedButton.icon(
                         onPressed: homeViewModel.navigateToJournalWrite,
                         icon: const Icon(Icons.edit),
-                        label: const Text('기록 쓰기'),
+                        label: Text(AppLocalizations.of(context).writeJournal),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.orange.shade400,
                           foregroundColor: Colors.white,
@@ -63,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: OutlinedButton.icon(
                         onPressed: homeViewModel.navigateToSpotSave,
                         icon: const Icon(Icons.bookmark_add),
-                        label: const Text('스팟 저장'),
+                        label: Text(AppLocalizations.of(context).saveSpot),
                       ),
                     ),
                   ],
@@ -73,9 +81,9 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 20),
 
             // 추천 스팟 섹션
-            const Text(
-              '🔥 인기 캠핑 스팟',
-              style: TextStyle(
+            Text(
+              AppLocalizations.of(context).popularCampingSpots,
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
@@ -118,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                   const SizedBox(height: 4),
                                   Text(
-                                    '⭐ ${spot.rating} · ${spot.type}',
+                                    '${AppLocalizations.of(context).rating(spot.rating)} · ${spot.type}',
                                     style: TextStyle(
                                       color: Colors.grey.shade600,
                                       fontSize: 12,
@@ -138,9 +146,9 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 20),
 
             // 나의 최근 기록
-            const Text(
-              '📝 나의 최근 기록',
-              style: TextStyle(
+            Text(
+              AppLocalizations.of(context).myRecentJournals,
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
@@ -153,7 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: const Icon(Icons.calendar_today, color: Colors.blue),
                 ),
                 title: Text(journal.title),
-                subtitle: Text('${journal.date.year}.${journal.date.month.toString().padLeft(2, '0')}.${journal.date.day.toString().padLeft(2, '0')} · ${journal.duration}박 ${journal.duration + 1}일'),
+                subtitle: Text('${journal.date.year}.${journal.date.month.toString().padLeft(2, '0')}.${journal.date.day.toString().padLeft(2, '0')} · ${AppLocalizations.of(context).duration(journal.duration, journal.duration + 1)}'),
                 trailing: const Icon(Icons.arrow_forward_ios, size: 16),
                 onTap: () => homeViewModel.onJournalTap(journal),
               ),

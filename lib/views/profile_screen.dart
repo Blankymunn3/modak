@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('내 정보'),
+        title: Text(l10n.profile),
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
@@ -35,8 +38,8 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const Text(
-                    '캠핑러버',
+                  Text(
+                    l10n.campingLover,
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -54,9 +57,9 @@ class ProfileScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      _buildStatCard('기록', '25'),
-                      _buildStatCard('저장한 스팟', '12'),
-                      _buildStatCard('팔로워', '8'),
+                      _buildStatCard(l10n.records, '25'),
+                      _buildStatCard(l10n.savedSpots, '12'),
+                      _buildStatCard(l10n.followers, '8'),
                     ],
                   ),
                 ],
@@ -66,24 +69,24 @@ class ProfileScreen extends StatelessWidget {
             const Divider(),
 
             // 메뉴 섹션
-            _buildMenuSection('캠핑 관리', [
-              _buildMenuItem(Icons.bookmark, '저장한 스팟', () {}),
-              _buildMenuItem(Icons.inventory, '내 장비', () {}),
-              _buildMenuItem(Icons.checklist, '체크리스트', () {}),
-              _buildMenuItem(Icons.analytics, '캠핑 통계', () {}),
+            _buildMenuSection(l10n.campingManagement, [
+              _buildMenuItem(Icons.bookmark, l10n.savedSpots, () {}),
+              _buildMenuItem(Icons.inventory, l10n.myEquipment, () {}),
+              _buildMenuItem(Icons.checklist, l10n.checklist, () {}),
+              _buildMenuItem(Icons.analytics, l10n.campingStats, () {}),
             ]),
 
-            _buildMenuSection('커뮤니티', [
-              _buildMenuItem(Icons.article, '내가 쓴 글', () {}),
-              _buildMenuItem(Icons.comment, '댓글 단 글', () {}),
-              _buildMenuItem(Icons.favorite, '좋아요 한 글', () {}),
+            _buildMenuSection(l10n.community, [
+              _buildMenuItem(Icons.article, l10n.myWritings, () {}),
+              _buildMenuItem(Icons.comment, l10n.commentedPosts, () {}),
+              _buildMenuItem(Icons.favorite, l10n.likedPosts, () {}),
             ]),
 
-            _buildMenuSection('설정', [
-              _buildMenuItem(Icons.notifications, '알림 설정', () {}),
-              _buildMenuItem(Icons.privacy_tip, '개인정보 처리방침', () {}),
-              _buildMenuItem(Icons.help, '고객센터', () {}),
-              _buildMenuItem(Icons.info, '앱 정보', () {}),
+            _buildMenuSection(l10n.settings, [
+              _buildMenuItem(Icons.notifications, l10n.notifications, () {}),
+              _buildMenuItem(Icons.privacy_tip, l10n.privacyPolicy, () {}),
+              _buildMenuItem(Icons.help, l10n.customerService, () {}),
+              _buildMenuItem(Icons.info, l10n.appInfo, () {}),
             ]),
 
             const SizedBox(height: 20),

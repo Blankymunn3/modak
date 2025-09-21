@@ -1,0 +1,197 @@
+{
+  "appTitle": "Modak",
+  "@appTitle": {
+    "description": "Application title"
+  },
+  "home": "Home",
+  "@home": {
+    "description": "Home tab label"
+  },
+  "map": "Map",
+  "@map": {
+    "description": "Map tab label"
+  },
+  "journal": "Journal",
+  "@journal": {
+    "description": "Journal tab label"
+  },
+  "community": "Community",
+  "@community": {
+    "description": "Community tab label"
+  },
+  "profile": "Profile",
+  "@profile": {
+    "description": "Profile tab label"
+  },
+  "writeJournal": "Write Journal",
+  "@writeJournal": {
+    "description": "Write journal button"
+  },
+  "saveSpot": "Save Spot",
+  "@saveSpot": {
+    "description": "Save spot button"
+  },
+  "popularCampingSpots": "🔥 Popular Camping Spots",
+  "@popularCampingSpots": {
+    "description": "Popular camping spots section title"
+  },
+  "myRecentJournals": "📝 My Recent Journals",
+  "@myRecentJournals": {
+    "description": "Recent journals section title"
+  },
+  "newJournal": "New Journal",
+  "@newJournal": {
+    "description": "New journal button"
+  },
+  "pastTrips": "Past Trips",
+  "@pastTrips": {
+    "description": "Past trips button"
+  },
+  "currentLocation": "My Location",
+  "@currentLocation": {
+    "description": "Go to current location button"
+  },
+  "saveFilter": "Save Filter",
+  "@saveFilter": {
+    "description": "Save filter button"
+  },
+  "mapIntegrationPending": "Map Integration Pending",
+  "@mapIntegrationPending": {
+    "description": "Map preparation message"
+  },
+  "filterSettings": "Filter Settings",
+  "@filterSettings": {
+    "description": "Filter settings title"
+  },
+  "campingType": "Camping Type",
+  "@campingType": {
+    "description": "Camping type label"
+  },
+  "amenities": "Amenities",
+  "@amenities": {
+    "description": "Amenities label"
+  },
+  "apply": "Apply",
+  "@apply": {
+    "description": "Apply button"
+  },
+  "all": "All",
+  "@all": {
+    "description": "All filter"
+  },
+  "wildCamping": "Wild Camping",
+  "@wildCamping": {
+    "description": "Wild camping type"
+  },
+  "campground": "Campground",
+  "@campground": {
+    "description": "Campground type"
+  },
+  "carCamping": "Car Camping",
+  "@carCamping": {
+    "description": "Car camping type"
+  },
+  "glamping": "Glamping",
+  "@glamping": {
+    "description": "Glamping type"
+  },
+  "backpacking": "Backpacking",
+  "@backpacking": {
+    "description": "Backpacking type"
+  },
+  "toilet": "Toilet",
+  "@toilet": {
+    "description": "Toilet amenity"
+  },
+  "waterSupply": "Water Supply",
+  "@waterSupply": {
+    "description": "Water supply amenity"
+  },
+  "electricity": "Electricity",
+  "@electricity": {
+    "description": "Electricity amenity"
+  },
+  "shower": "Shower",
+  "@shower": {
+    "description": "Shower amenity"
+  },
+  "parking": "Parking",
+  "@parking": {
+    "description": "Parking amenity"
+  },
+  "weather": "Weather",
+  "@weather": {
+    "description": "Weather label"
+  },
+  "temperature": "Temperature",
+  "@temperature": {
+    "description": "Temperature label"
+  },
+  "photos": "Photos",
+  "@photos": {
+    "description": "Photos label"
+  },
+  "photoCount": "{count} photos",
+  "@photoCount": {
+    "description": "Photo count",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "duration": "{nights} nights {days} days",
+  "@duration": {
+    "description": "Trip duration",
+    "placeholders": {
+      "nights": {
+        "type": "int"
+      },
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "weatherSunny": "Sunny",
+  "@weatherSunny": {
+    "description": "Sunny weather"
+  },
+  "weatherCloudy": "Cloudy",
+  "@weatherCloudy": {
+    "description": "Cloudy weather"
+  },
+  "weatherRainy": "Rainy",
+  "@weatherRainy": {
+    "description": "Rainy weather"
+  },
+  "weatherSnowy": "Snowy",
+  "@weatherSnowy": {
+    "description": "Snowy weather"
+  },
+  "weatherWindy": "Windy",
+  "@weatherWindy": {
+    "description": "Windy weather"
+  },
+  "temperatureFormat": "{temp}°C",
+  "@temperatureFormat": {
+    "description": "Temperature format",
+    "placeholders": {
+      "temp": {
+        "type": "int"
+      }
+    }
+  },
+  "rating": "⭐ {rating}",
+  "@rating": {
+    "description": "Rating display",
+    "placeholders": {
+      "rating": {
+        "type": "double"
+      }
+    }
+  },
+  "loading": "Loading...",
+  "@loading": {
+    "description": "Loading message"
+  }
+}

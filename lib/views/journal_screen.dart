@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../l10n/app_localizations.dart';
 import '../viewmodels/journal_viewmodel.dart';
 
 class JournalScreen extends StatefulWidget {
@@ -23,16 +24,23 @@ class _JournalScreenState extends State<JournalScreen> {
     return Consumer<JournalViewModel>(
       builder: (context, journalViewModel, child) {
         if (journalViewModel.isLoading) {
-          return const Scaffold(
+          return Scaffold(
             body: Center(
-              child: CircularProgressIndicator(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const CircularProgressIndicator(),
+                  const SizedBox(height: 16),
+                  Text(AppLocalizations.of(context).loading),
+                ],
+              ),
             ),
           );
         }
 
         return Scaffold(
           appBar: AppBar(
-            title: const Text('기록'),
+            title: Text(AppLocalizations.of(context).journal),
             backgroundColor: Colors.transparent,
             elevation: 0,
           ),
@@ -46,7 +54,7 @@ class _JournalScreenState extends State<JournalScreen> {
                       child: ElevatedButton.icon(
                         onPressed: journalViewModel.createNewJournal,
                         icon: const Icon(Icons.add),
-                        label: const Text('새 기록'),
+                        label: Text(AppLocalizations.of(context).newJournal),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.green,
                           foregroundColor: Colors.white,
@@ -59,7 +67,7 @@ class _JournalScreenState extends State<JournalScreen> {
                       child: OutlinedButton.icon(
                         onPressed: journalViewModel.viewPastTrips,
                         icon: const Icon(Icons.history),
-                        label: const Text('지난 여행'),
+                        label: Text(AppLocalizations.of(context).pastTrips),
                       ),
                     ),
                   ],
@@ -120,7 +128,7 @@ class _JournalScreenState extends State<JournalScreen> {
                               ),
                               const SizedBox(height: 8),
                               Text(
-                                '날씨: ${journal.weather} · 온도: ${journal.temperature.toInt()}°C',
+                                '${AppLocalizations.of(context).weather}: ${journal.weather} · ${AppLocalizations.of(context).temperatureFormat(journal.temperature.toInt())}',
                                 style: TextStyle(
                                   color: Colors.grey.shade600,
                                   fontSize: 14,
@@ -136,7 +144,7 @@ class _JournalScreenState extends State<JournalScreen> {
                                   ),
                                   const SizedBox(width: 4),
                                   Text(
-                                    '사진 ${journal.photos.length}장',
+                                    AppLocalizations.of(context).photoCount(journal.photos.length),
                                     style: TextStyle(
                                       color: Colors.grey.shade600,
                                       fontSize: 12,
@@ -150,7 +158,7 @@ class _JournalScreenState extends State<JournalScreen> {
                                   ),
                                   const SizedBox(width: 4),
                                   Text(
-                                    '${journal.duration}박 ${journal.duration + 1}일',
+                                    AppLocalizations.of(context).duration(journal.duration, journal.duration + 1),
                                     style: TextStyle(
                                       color: Colors.grey.shade600,
                                       fontSize: 12,

@@ -1,0 +1,341 @@
+{
+  "appTitle": "모닥",
+  "@appTitle": {
+    "description": "애플리케이션 제목"
+  },
+  "home": "홈",
+  "@home": {
+    "description": "홈 탭 라벨"
+  },
+  "map": "지도",
+  "@map": {
+    "description": "지도 탭 라벨"
+  },
+  "journal": "기록",
+  "@journal": {
+    "description": "기록 탭 라벨"
+  },
+  "community": "모닥불",
+  "@community": {
+    "description": "커뮤니티 탭 라벨"
+  },
+  "profile": "내 정보",
+  "@profile": {
+    "description": "프로필 탭 라벨"
+  },
+  "writeJournal": "기록 쓰기",
+  "@writeJournal": {
+    "description": "기록 쓰기 버튼"
+  },
+  "saveSpot": "스팟 저장",
+  "@saveSpot": {
+    "description": "스팟 저장 버튼"
+  },
+  "popularCampingSpots": "🔥 인기 캠핑 스팟",
+  "@popularCampingSpots": {
+    "description": "인기 캠핑 스팟 섹션 제목"
+  },
+  "myRecentJournals": "📝 나의 최근 기록",
+  "@myRecentJournals": {
+    "description": "최근 기록 섹션 제목"
+  },
+  "newJournal": "새 기록",
+  "@newJournal": {
+    "description": "새 기록 버튼"
+  },
+  "pastTrips": "지난 여행",
+  "@pastTrips": {
+    "description": "지난 여행 버튼"
+  },
+  "currentLocation": "현재 위치로",
+  "@currentLocation": {
+    "description": "현재 위치로 이동 버튼"
+  },
+  "saveFilter": "필터 저장",
+  "@saveFilter": {
+    "description": "필터 저장 버튼"
+  },
+  "mapIntegrationPending": "지도 연동 예정",
+  "@mapIntegrationPending": {
+    "description": "지도 준비 중 메시지"
+  },
+  "filterSettings": "필터 설정",
+  "@filterSettings": {
+    "description": "필터 설정 제목"
+  },
+  "campingType": "캠핑 유형",
+  "@campingType": {
+    "description": "캠핑 유형 라벨"
+  },
+  "amenities": "편의시설",
+  "@amenities": {
+    "description": "편의시설 라벨"
+  },
+  "apply": "적용",
+  "@apply": {
+    "description": "적용 버튼"
+  },
+  "all": "전체",
+  "@all": {
+    "description": "전체 필터"
+  },
+  "wildCamping": "노지",
+  "@wildCamping": {
+    "description": "노지 캠핑 유형"
+  },
+  "campground": "캠핑장",
+  "@campground": {
+    "description": "캠핑장 유형"
+  },
+  "carCamping": "차박",
+  "@carCamping": {
+    "description": "차박 유형"
+  },
+  "glamping": "글램핑",
+  "@glamping": {
+    "description": "글램핑 유형"
+  },
+  "backpacking": "백패킹",
+  "@backpacking": {
+    "description": "백패킹 유형"
+  },
+  "toilet": "화장실",
+  "@toilet": {
+    "description": "화장실 편의시설"
+  },
+  "waterSupply": "물 공급",
+  "@waterSupply": {
+    "description": "물 공급 편의시설"
+  },
+  "electricity": "전기",
+  "@electricity": {
+    "description": "전기 편의시설"
+  },
+  "shower": "샤워실",
+  "@shower": {
+    "description": "샤워실 편의시설"
+  },
+  "parking": "주차장",
+  "@parking": {
+    "description": "주차장 편의시설"
+  },
+  "weather": "날씨",
+  "@weather": {
+    "description": "날씨 라벨"
+  },
+  "temperature": "온도",
+  "@temperature": {
+    "description": "온도 라벨"
+  },
+  "photos": "사진",
+  "@photos": {
+    "description": "사진 라벨"
+  },
+  "photoCount": "사진 {count}장",
+  "@photoCount": {
+    "description": "사진 개수",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "duration": "{nights}박 {days}일",
+  "@duration": {
+    "description": "여행 기간",
+    "placeholders": {
+      "nights": {
+        "type": "int"
+      },
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "weatherSunny": "맑음",
+  "@weatherSunny": {
+    "description": "맑은 날씨"
+  },
+  "weatherCloudy": "흐림",
+  "@weatherCloudy": {
+    "description": "흐린 날씨"
+  },
+  "weatherRainy": "비",
+  "@weatherRainy": {
+    "description": "비 오는 날씨"
+  },
+  "weatherSnowy": "눈",
+  "@weatherSnowy": {
+    "description": "눈 오는 날씨"
+  },
+  "weatherWindy": "바람",
+  "@weatherWindy": {
+    "description": "바람 부는 날씨"
+  },
+  "temperatureFormat": "{temp}°C",
+  "@temperatureFormat": {
+    "description": "온도 표시 형식",
+    "placeholders": {
+      "temp": {
+        "type": "int"
+      }
+    }
+  },
+  "rating": "⭐ {rating}",
+  "@rating": {
+    "description": "평점 표시",
+    "placeholders": {
+      "rating": {
+        "type": "double"
+      }
+    }
+  },
+  "loading": "로딩 중...",
+  "@loading": {
+    "description": "로딩 메시지"
+  },
+  "askQuestion": "질문하기",
+  "@askQuestion": {
+    "description": "질문하기 버튼"
+  },
+  "equipment": "장비",
+  "@equipment": {
+    "description": "장비 태그"
+  },
+  "cooking": "요리",
+  "@cooking": {
+    "description": "요리 태그"
+  },
+  "tips": "팁",
+  "@tips": {
+    "description": "팁 태그"
+  },
+  "recipe": "레시피",
+  "@recipe": {
+    "description": "레시피 태그"
+  },
+  "tent": "텐트",
+  "@tent": {
+    "description": "텐트 장비"
+  },
+  "recommendation": "추천",
+  "@recommendation": {
+    "description": "추천 태그"
+  },
+  "winterCamping": "겨울캠핑",
+  "@winterCamping": {
+    "description": "겨울캠핑 태그"
+  },
+  "checklist": "체크리스트",
+  "@checklist": {
+    "description": "체크리스트"
+  },
+  "reservation": "예약",
+  "@reservation": {
+    "description": "예약"
+  },
+  "comparison": "비교",
+  "@comparison": {
+    "description": "비교"
+  },
+  "review": "후기",
+  "@review": {
+    "description": "후기"
+  },
+  "mattress": "매트리스",
+  "@mattress": {
+    "description": "매트리스"
+  },
+  "campingLover": "캠핑러버",
+  "@campingLover": {
+    "description": "캠핑러버 타이틀"
+  },
+  "records": "기록",
+  "@records": {
+    "description": "기록 통계"
+  },
+  "followers": "팔로워",
+  "@followers": {
+    "description": "팔로워 수"
+  },
+  "myPosts": "내 글",
+  "@myPosts": {
+    "description": "내 글 메뉴"
+  },
+  "bookmarkedPosts": "북마크한 글",
+  "@bookmarkedPosts": {
+    "description": "북마크한 글 메뉴"
+  },
+  "settings": "설정",
+  "@settings": {
+    "description": "설정 메뉴"
+  },
+  "notifications": "알림",
+  "@notifications": {
+    "description": "알림 설정"
+  },
+  "customerService": "고객센터",
+  "@customerService": {
+    "description": "고객센터 메뉴"
+  },
+  "locationJirisan": "지리산",
+  "@locationJirisan": {
+    "description": "지리산 위치"
+  },
+  "locationSeoraksan": "설악산",
+  "@locationSeoraksan": {
+    "description": "설악산 위치"
+  },
+  "locationHallasan": "한라산",
+  "@locationHallasan": {
+    "description": "한라산 위치"
+  },
+  "locationBukhansan": "북한산",
+  "@locationBukhansan": {
+    "description": "북한산 위치"
+  },
+  "locationDeokyusan": "덕유산",
+  "@locationDeokyusan": {
+    "description": "덕유산 위치"
+  },
+  "savedSpots": "저장한 스팟",
+  "@savedSpots": {
+    "description": "저장한 스팟"
+  },
+  "myEquipment": "내 장비",
+  "@myEquipment": {
+    "description": "내 장비"
+  },
+  "campingStats": "캠핑 통계",
+  "@campingStats": {
+    "description": "캠핑 통계"
+  },
+  "myWritings": "내가 쓴 글",
+  "@myWritings": {
+    "description": "내가 쓴 글"
+  },
+  "commentedPosts": "댓글 단 글",
+  "@commentedPosts": {
+    "description": "댓글 단 글"
+  },
+  "likedPosts": "좋아요 한 글",
+  "@likedPosts": {
+    "description": "좋아요 한 글"
+  },
+  "privacyPolicy": "개인정보 처리방침",
+  "@privacyPolicy": {
+    "description": "개인정보 처리방침"
+  },
+  "appInfo": "앱 정보",
+  "@appInfo": {
+    "description": "앱 정보"
+  },
+  "campingManagement": "캠핑 관리",
+  "@campingManagement": {
+    "description": "캠핑 관리 섹션"
+  },
+  "postReview": "후기 올리기",
+  "@postReview": {
+    "description": "후기 올리기 버튼"
+  }
+}

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../l10n/app_localizations.dart';
 import '../viewmodels/map_viewmodel.dart';
 
 class MapScreen extends StatefulWidget {
@@ -25,16 +26,23 @@ class _MapScreenState extends State<MapScreen> {
     return Consumer<MapViewModel>(
       builder: (context, mapViewModel, child) {
         if (mapViewModel.isLoading) {
-          return const Scaffold(
+          return Scaffold(
             body: Center(
-              child: CircularProgressIndicator(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const CircularProgressIndicator(),
+                  const SizedBox(height: 16),
+                  Text(AppLocalizations.of(context).loading),
+                ],
+              ),
             ),
           );
         }
 
         return Scaffold(
           appBar: AppBar(
-            title: const Text('지도'),
+            title: Text(AppLocalizations.of(context).map),
             backgroundColor: Colors.transparent,
             elevation: 0,
             actions: [
@@ -50,15 +58,15 @@ class _MapScreenState extends State<MapScreen> {
             children: [
               Container(
                 color: Colors.grey.shade200,
-                child: const Center(
+                child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.map, size: 80, color: Colors.grey),
-                      SizedBox(height: 16),
+                      const Icon(Icons.map, size: 80, color: Colors.grey),
+                      const SizedBox(height: 16),
                       Text(
-                        '지도 연동 예정',
-                        style: TextStyle(
+                        AppLocalizations.of(context).mapIntegrationPending,
+                        style: const TextStyle(
                           fontSize: 18,
                           color: Colors.grey,
                         ),
@@ -77,7 +85,7 @@ class _MapScreenState extends State<MapScreen> {
                       child: ElevatedButton.icon(
                         onPressed: mapViewModel.getCurrentLocation,
                         icon: const Icon(Icons.my_location),
-                        label: const Text('현재 위치로'),
+                        label: Text(AppLocalizations.of(context).currentLocation),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue,
                           foregroundColor: Colors.white,
@@ -89,7 +97,7 @@ class _MapScreenState extends State<MapScreen> {
                     ElevatedButton.icon(
                       onPressed: mapViewModel.saveCurrentFilter,
                       icon: const Icon(Icons.bookmark),
-                      label: const Text('필터 저장'),
+                      label: Text(AppLocalizations.of(context).saveFilter),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.orange,
                         foregroundColor: Colors.white,
@@ -108,33 +116,33 @@ class _MapScreenState extends State<MapScreen> {
                   child: Row(
                     children: [
                       _buildFilterChip(
-                        '전체',
+                        AppLocalizations.of(context).all,
                         mapViewModel.filterSettings.campingTypes.isEmpty &&
                         mapViewModel.filterSettings.amenities.isEmpty,
                         () => mapViewModel.clearFilters()
                       ),
                       _buildFilterChip(
-                        '노지',
+                        AppLocalizations.of(context).wildCamping,
                         mapViewModel.filterSettings.campingTypes.contains('노지'),
                         () => mapViewModel.toggleCampingType('노지')
                       ),
                       _buildFilterChip(
-                        '캠핑장',
+                        AppLocalizations.of(context).campground,
                         mapViewModel.filterSettings.campingTypes.contains('캠핑장'),
                         () => mapViewModel.toggleCampingType('캠핑장')
                       ),
                       _buildFilterChip(
-                        '차박',
+                        AppLocalizations.of(context).carCamping,
                         mapViewModel.filterSettings.campingTypes.contains('차박'),
                         () => mapViewModel.toggleCampingType('차박')
                       ),
                       _buildFilterChip(
-                        '물 공급',
+                        AppLocalizations.of(context).waterSupply,
                         mapViewModel.filterSettings.amenities.contains('물 공급'),
                         () => mapViewModel.toggleAmenity('물 공급')
                       ),
                       _buildFilterChip(
-                        '화장실',
+                        AppLocalizations.of(context).toilet,
                         mapViewModel.filterSettings.amenities.contains('화장실'),
                         () => mapViewModel.toggleAmenity('화장실')
                       ),
@@ -172,59 +180,59 @@ class _MapScreenState extends State<MapScreen> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              '필터 설정',
-              style: TextStyle(
+            Text(
+              AppLocalizations.of(context).filterSettings,
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 20),
-            const Text('캠핑 유형'),
+            Text(AppLocalizations.of(context).campingType),
             const SizedBox(height: 8),
             Wrap(
               spacing: 8,
               children: [
                 _buildFilterChip(
-                  '노지',
+                  AppLocalizations.of(context).wildCamping,
                   mapViewModel.filterSettings.campingTypes.contains('노지'),
                   () => mapViewModel.toggleCampingType('노지')
                 ),
                 _buildFilterChip(
-                  '캠핑장',
+                  AppLocalizations.of(context).campground,
                   mapViewModel.filterSettings.campingTypes.contains('캠핑장'),
                   () => mapViewModel.toggleCampingType('캠핑장')
                 ),
                 _buildFilterChip(
-                  '차박',
+                  AppLocalizations.of(context).carCamping,
                   mapViewModel.filterSettings.campingTypes.contains('차박'),
                   () => mapViewModel.toggleCampingType('차박')
                 ),
               ],
             ),
             const SizedBox(height: 20),
-            const Text('편의시설'),
+            Text(AppLocalizations.of(context).amenities),
             const SizedBox(height: 8),
             Wrap(
               spacing: 8,
               children: [
                 _buildFilterChip(
-                  '화장실',
+                  AppLocalizations.of(context).toilet,
                   mapViewModel.filterSettings.amenities.contains('화장실'),
                   () => mapViewModel.toggleAmenity('화장실')
                 ),
                 _buildFilterChip(
-                  '물 공급',
+                  AppLocalizations.of(context).waterSupply,
                   mapViewModel.filterSettings.amenities.contains('물 공급'),
                   () => mapViewModel.toggleAmenity('물 공급')
                 ),
                 _buildFilterChip(
-                  '전기',
+                  AppLocalizations.of(context).electricity,
                   mapViewModel.filterSettings.amenities.contains('전기'),
                   () => mapViewModel.toggleAmenity('전기')
                 ),
                 _buildFilterChip(
-                  '샤워실',
+                  AppLocalizations.of(context).shower,
                   mapViewModel.filterSettings.amenities.contains('샤워실'),
                   () => mapViewModel.toggleAmenity('샤워실')
                 ),
@@ -235,7 +243,7 @@ class _MapScreenState extends State<MapScreen> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('적용'),
+                child: Text(AppLocalizations.of(context).apply),
               ),
             ),
           ],

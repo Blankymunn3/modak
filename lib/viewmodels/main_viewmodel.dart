@@ -1,4 +1,6 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 
 class MainViewModel extends ChangeNotifier {
   int _selectedIndex = 0;
@@ -12,18 +14,19 @@ class MainViewModel extends ChangeNotifier {
     }
   }
 
-  String getTabLabel(int index) {
+  String getTabLabel(int index, BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     switch (index) {
       case 0:
-        return '홈';
+        return l10n.home;
       case 1:
-        return '지도';
+        return l10n.map;
       case 2:
-        return '기록';
+        return l10n.journal;
       case 3:
-        return '모닥불';
+        return l10n.community;
       case 4:
-        return '내 정보';
+        return l10n.profile;
       default:
         return '';
     }
